@@ -1,0 +1,1 @@
+PRE-FASE --->configuramos las dependencias y hacemos los cambios correspondientes en package.json y creamos nuestra coneccion a la base de datos con nuestro servidor
