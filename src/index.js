@@ -1,7 +1,7 @@
 import { PORT } from "./config.js";
 import http from 'node:http'
 import  fs  from "node:fs/promises";
-import { ruta1, ruta2 } from './controller.js';
+import { ruta1, ruta2, ruta3  } from './controller.js';
 
 
 const server = http.createServer(async(request, response)=>{
@@ -28,8 +28,8 @@ const server = http.createServer(async(request, response)=>{
 
         case '/api/usuarios/export':
             if (metodo === 'GET') {
-                response.writeHead(200, { 'Content-Type': 'text/plain' });
-                response.end('Ruta 3');
+                await ruta3(request,response)
+               break;
             } else {
                 response.writeHead(405, { 'Content-Type': 'text/plain' });
                 response.end('error ruta 3');

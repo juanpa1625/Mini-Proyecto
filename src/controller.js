@@ -27,3 +27,24 @@ export const ruta2 = async (request,response) => {
         response.end(JSON.stringify({ error: 'Error interno del servidor' }));
     }
 };
+
+
+
+export const ruta3 = async (request, response) => {
+    try {
+        const [resultado] = await pool.query('SELECT * FROM usuarios');
+        const csvData = resultado.map(columna => Object.values(columna).join(',')).join('\n');
+        const csvHeader = 'id,nombres,apellidos,direccion,email,dni,edad,fecha_creacion,telefono\n';
+        const csvFile = csvHeader + csvData;
+
+        await fs.writeFile('./src/usuarios.csv', csvFile);
+        response.writeHead(200, { 'Content-Type': 'text/plain' });
+        response.end('Exportando archivo');
+     
+    } catch (err) {
+        console.error("Error al exportar usuarios:", err);
+        response.writeHead(500, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ error: 'Error al exportar usuarios' }));
+    }
+};
+ 

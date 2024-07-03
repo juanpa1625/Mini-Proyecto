@@ -1,1 +1,4 @@
-PRE-FASE --->configuramos las dependencias y hacemos los cambios correspondientes en package.json y creamos nuestra coneccion a la base de datos con nuestro servidor
+PRE-FASE --->Configuramos las dependencias y hacemos los cambios correspondientes en package.json y creamos nuestra coneccion a la base de datos con nuestro servidor
+fase 1 ----> Consiste en realizar la ruta1 y algunas breves modificaciones
+fase 2 ----> Realizar ruta 2 y poner ruta 1 y 2 en funciones para importarlas desde controller.json
+fase 3 ----> Crear la funcion que exporte los archivos
