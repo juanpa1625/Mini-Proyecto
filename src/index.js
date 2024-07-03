@@ -1,8 +1,7 @@
 import { PORT } from "./config.js";
 import http from 'node:http'
-import { pool } from "./db.js";
 import  fs  from "node:fs/promises";
-
+import { ruta1, ruta2 } from './controller.js';
 
 
 const server = http.createServer(async(request, response)=>{
@@ -11,9 +10,7 @@ const server = http.createServer(async(request, response)=>{
     switch (url) {
         case '/':
             if (metodo=== 'GET') {
-                response.writeHead(200, { 'Content-Type': 'text/html' });
-                const data = await fs.readFile('./publico/index.html', 'utf-8');
-                    response.end(data);
+               await ruta1(request,response)
             } else {
                 response.writeHead(405, { 'Content-Type': 'text/plain' });
                 response.end('error ruta 1');
@@ -22,18 +19,7 @@ const server = http.createServer(async(request, response)=>{
 
         case '/api/usuarios':
             if (metodo === 'GET') {
-                try {
-                    const [rows] = await pool.query("SELECT * FROM usuarios");
-                    await fs.writeFile("src/test.txt", JSON.stringify(rows), "utf-8");
-                    response.writeHead(200, {
-                        "Content-Type": "application/json; charset=utf-8",
-                    });
-                    response.end(JSON.stringify(rows));
-                } catch (error) {
-                    console.error("Error al obtener usuarios o escribir el archivo:", error);
-                    response.writeHead(500, { 'Content-Type': 'application/json' });
-                    response.end(JSON.stringify({ error: 'Error interno del servidor' }));
-                }
+                await ruta2(request,response)
             } else {
                 response.writeHead(405, { 'Content-Type': 'text/plain' });
                 response.end('error ruta 2');
