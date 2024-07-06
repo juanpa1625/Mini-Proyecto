@@ -2,3 +2,4 @@ PRE-FASE --->Configuramos las dependencias y hacemos los cambios correspondiente
 fase 1 ----> Consiste en realizar la ruta1 y algunas breves modificaciones
 fase 2 ----> Realizar ruta 2 y poner ruta 1 y 2 en funciones para importarlas desde controller.json
 fase 3 ----> Crear la funcion que exporte los archivos
+fase 4 ----> Crear la funcion que importe los archivos con validaciones

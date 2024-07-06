@@ -1,7 +1,6 @@
 import { PORT } from "./config.js";
 import http from 'node:http'
-import  fs  from "node:fs/promises";
-import { ruta1, ruta2, ruta3  } from './controller.js';
+import { ruta1, ruta2, ruta3, ruta4  } from './controller.js';
 
 
 const server = http.createServer(async(request, response)=>{
@@ -37,9 +36,8 @@ const server = http.createServer(async(request, response)=>{
             break;
 
         case '/api/usuarios/import':
-            if (metodo === 'POST') {
-                response.writeHead(200, { 'Content-Type': 'text/plain' });
-                response.end('Ruta 4');
+            if (metodo === 'GET') {
+                await ruta4(request,response)
             } else {
                 response.writeHead(405, { 'Content-Type': 'text/plain' });
                 response.end('error ruta 4');
